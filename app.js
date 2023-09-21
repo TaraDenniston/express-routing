@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const ExpressError = require('./expressError');
-const { convertToNums } = require('./helpers');
+const { convertToNums, calculateMean } = require('./helpers');
 
 
 app.get('/mean', (req, res, next) => {
@@ -23,7 +23,7 @@ app.get('/mean', (req, res, next) => {
   // format response
   let result = {
     operation: "mean",
-    result: "need to implement"
+    value: calculateMean(numsArray)
   }
 
   // return result

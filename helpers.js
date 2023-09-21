@@ -1,6 +1,6 @@
-/***********************************************
+/**************************************************
  * Convert array of strings to array of numbers
- ***********************************************/
+ **************************************************/
 function convertToNums(strsArray) {
   let numsArray = [];
 
@@ -18,6 +18,21 @@ function convertToNums(strsArray) {
 }
 
 
+/**************************************************
+ * Given an array of numbers, calculate the mean 
+ **************************************************/
+function calculateMean(numsArray) {
+  let sum = 0;
+
+  for (let i = 0; i < numsArray.length; i++) {
+    sum += numsArray[i];
+  }
+
+  return sum / numsArray.length;
+}
+
+
 module.exports = {
-  convertToNums
+  convertToNums, 
+  calculateMean
 };
