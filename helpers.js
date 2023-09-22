@@ -32,7 +32,27 @@ function calculateMean(numsArray) {
 }
 
 
+/**************************************************
+ * Given an array of numbers, calculate the median 
+ **************************************************/
+function calculateMedian(numsArray) {
+  numsArray.sort((a, b) => {return a - b});
+  
+  let middleIndex = Math.floor(numsArray.length / 2);
+  let median;
+
+  if (nums.length % 2 === 0) {
+    median = (nums[middleIndex] + nums[middleIndex - 1]) / 2;
+  } else {
+    median = nums[middleIndex];
+  }
+
+  return median;
+}
+
+
 module.exports = {
   convertToNums, 
-  calculateMean
+  calculateMean,
+  calculateMedian
 };
