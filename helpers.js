@@ -37,22 +37,64 @@ function calculateMean(numsArray) {
  **************************************************/
 function calculateMedian(numsArray) {
   numsArray.sort((a, b) => {return a - b});
-  
+
   let middleIndex = Math.floor(numsArray.length / 2);
   let median;
 
-  if (nums.length % 2 === 0) {
-    median = (nums[middleIndex] + nums[middleIndex - 1]) / 2;
+  if (numsArray.length % 2 === 0) {
+    median = (numsArray[middleIndex] + numsArray[middleIndex - 1]) / 2;
   } else {
-    median = nums[middleIndex];
+    median = numsArray[middleIndex];
   }
 
   return median;
 }
 
 
+/**************************************************
+ * Given an array of numbers, calculate the mode 
+ **************************************************/
+function calculateMode(numsArray) {
+  // Create new array storing frequency of each value in numsArray
+  let freqCounter = numsArray.reduce((total, value) => {
+    return (
+      total[value] ? ++total[value] :(total[value] = 1), total
+    );
+  }, {});
+
+  // Calculate mode(s)
+  let mode;
+  let count = 0;
+  let mostFrequent;
+  let ties = [];
+
+  for (let key in freqCounter) {
+    if (freqCounter[key] > count) {
+      mostFrequent = key;
+      ties = [];
+      ties.push(key);
+      count = freqCounter[key];
+    } else if (freqCounter[key] == count){
+      ties.push(key);
+    }
+  }
+
+  // Figure out what to return based on 0, 1, or multiple modes
+  if (count == 1) {
+    mode = 'none';
+  } else if (ties.length == 1) {
+    mode = mostFrequent;
+  } else if (ties.length > 1) {
+    mode = ties;
+  }
+  
+  return mode;
+}
+
+
 module.exports = {
   convertToNums, 
   calculateMean,
-  calculateMedian
+  calculateMedian,
+  calculateMode
 };
