@@ -1,4 +1,4 @@
-const { convertToNums, calculateMean } = require('./helpers');
+const { convertToNums, calculateMean, calculateMedian } = require('./helpers');
 
 
 describe('convertToNums function', () => {
@@ -33,5 +33,23 @@ describe('calculateMean function', () => {
   test('returns mean from negative and positive numbers', () => {
     let mean = calculateMean([-5, -2, 5, 6]);
     expect(mean).toEqual(1);
+  });
+})
+
+
+describe('calculateMedian function', () => {
+  test('returns median from an odd amount of numbers', () => {
+    let median = calculateMedian([3, 13, 2, 34, 11, 26, 47]);
+    expect(median).toEqual(13);
+  });
+
+  test('returns median from an even amount of numbers', () => {
+    let median = calculateMedian([3, 13, 2, 34, 11, 17, 27, 47]);
+    expect(median).toEqual(15);
+  });
+
+  test('returns median from negative and positive numbers', () => {
+    let median = calculateMedian([-5, -2, 5, 6, 3, -11, 9]);
+    expect(median).toEqual(3);
   });
 })
