@@ -70,12 +70,12 @@ function calculateMode(numsArray) {
 
   for (let key in freqCounter) {
     if (freqCounter[key] > count) {
-      mostFrequent = key;
+      mostFrequent = +key;
       ties = [];
-      ties.push(key);
+      ties.push(+key);
       count = freqCounter[key];
     } else if (freqCounter[key] == count){
-      ties.push(key);
+      ties.push(+key);
     }
   }
 
