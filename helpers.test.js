@@ -1,4 +1,4 @@
-const { convertToNums, calculateMean, calculateMedian } = require('./helpers');
+const { convertToNums, calculateMean, calculateMedian, calculateMode } = require('./helpers');
 
 
 describe('convertToNums function', () => {
@@ -51,5 +51,23 @@ describe('calculateMedian function', () => {
   test('returns median from negative and positive numbers', () => {
     let median = calculateMedian([-5, -2, 5, 6, 3, -11, 9]);
     expect(median).toEqual(3);
+  });
+})
+
+
+describe('calculateMode function', () => {
+  test('returns "none" if no mode exists', () => {
+    let mode = calculateMode([1, 2, 3, 4, 5]);
+    expect(mode).toBe('none');
+  });
+
+  test('returns single value if only one mode exists', () => {
+    let mode = calculateMode([1, 2, 3, 3, 4, 5]);
+    expect(mode).toEqual(3);
+  });
+
+  test('returns array of all modes if multiple modes exist', () => {
+    let mode = calculateMode([1, 1, 2, 3, 4, 4, 5]);
+    expect(mode).toEqual([1, 4]);
   });
 })
